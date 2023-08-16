@@ -1,25 +1,24 @@
-
 import java.util.Scanner;
 public class Main {
-	static Scanner scanner = new Scanner(System.in);
+ static Scanner scanner = new Scanner(System.in);
     static Forum forum = new Forum();
-	public static void main(String[] args) {
-		setup();
-		mainMenu();
-	}
-	
-	private static void setup() {
+ public static void main(String[] args) {
+  setup();
+  mainMenu();
+ }
+ 
+ private static void setup() {
         // Create moderators
-		forum.addUser(new User("user1", "1234"));
-		forum.addUser(new User("user2", "1234"));
-		forum.addMod(new Moderator("moderator1", "1234"));
-		forum.addMod(new Moderator("moderator2", "1234"));
+  forum.addUser(new User("user1", "1234"));
+  forum.addUser(new User("user2", "1234"));
+  forum.addMod(new Moderator("moderator1", "1234"));
+  forum.addMod(new Moderator("moderator2", "1234"));
     }
 
     private static void mainMenu() {
         while (true) {
             System.out.println("\nLogin Menu:");
-          	System.out.println("========================");
+           System.out.println("========================");
             System.out.println("1. Login");
             System.out.println("2. Signup");
             System.out.println("3. Exit");
@@ -142,12 +141,12 @@ public class Main {
         System.out.print("Enter 0 to go back: ");
         int num = scanner.nextInt();
         if (num == 0) {
-        	return;
+         return;
         }
         else {
-        	System.out.println("Invalid choice. Please try again.");
+         System.out.println("Invalid choice. Please try again.");
         }
-        	
+         
   }
     
     private static void moderatorMenu(Moderator moderator) {
@@ -161,12 +160,7 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    forum.displayAllPosts();
-                    System.out.print("Enter a post ID to delete the post, or 0 to go back: ");
-                    int postId = scanner.nextInt();
-                    if (postId != 0) {
-                        moderator.deletePost(postId, forum);
-                    }
+                    viewAllPosts(moderator);
                     break;
                 case 2:
                     return;
@@ -174,6 +168,15 @@ public class Main {
                     System.out.println("Invalid choice. Please try again.");
             }
         }
+    }
+  
+    private static void viewAllPosts(Moderator moderator) {
+                          forum.displayAllPosts();
+                    System.out.print("Enter a post ID to delete the post, or 0 to go back: ");
+                    int postId = scanner.nextInt();
+                    if (postId != 0) {
+                        moderator.deletePost(postId, forum);
+                    }
     }
 
 }
