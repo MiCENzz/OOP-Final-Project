@@ -54,7 +54,7 @@ public class Forum {
 	public void addUser(User user) {
         users.add(user);
     }
-	public void addMod(Moderator mod) {
-		moderators.add(mod);
+	public void addMod(Moderator moderator) {
+		moderators.add(moderator);
     }
 }
